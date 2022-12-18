@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsrpc-cli dev",
+    "build": "tsrpc-cli build",
+    "doc": "tsrpc-cli doc"
+  },
+  "keywords": [],
+  "author": "Regan",
+  "license": "ISC",
+  "dependencies": {
+    "tsrpc": "^3.4.11",
+    "tsrpc-cli": "^2.4.5"
+  }
+}

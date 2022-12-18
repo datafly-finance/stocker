@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model Bk {
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  code      String
+  thrid     Thrid     @default(EastMoney)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+  Stock     Stock[]   @relation("BkToStock")
+}
+
+model Gn {
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  code      String
+  thrid     Thrid     @default(EastMoney)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+  Stock     Stock[]   @relation("GnToStock")
+}
+
+model Stock {
+  id        Int       @id @default(autoincrement())
+  name      String
+  code      String
+  thrid     Thrid     @default(EastMoney)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+  bk        Bk[]      @relation("BkToStock")
+  gn        Gn[]      @relation("GnToStock")
+}
+
+enum Thrid {
+  EastMoney
+  TongHuaShun
+}
